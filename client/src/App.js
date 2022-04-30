@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-route
 import Navbar from './Navbar';
 import NotFound from './NotFound';
 import { useAuth0 } from '@auth0/auth0-react';
+import Tumblr from './views/Tumblr';
 
 
 export default function App() {
@@ -25,10 +26,6 @@ export default function App() {
                 audience: `https://www.terrorknubbel.de`
             });
 
-            const idToken = await getIdTokenClaims();
-
-            console.log(idToken);
-            console.log(accessToken);
             const userDetailsByIdUrl = `http://localhost:3001/api/private`;
         
             const metadataResponse = await fetch(userDetailsByIdUrl, {
@@ -65,7 +62,7 @@ export default function App() {
                         </main>
                     }
                 />
-                <Route path="tumblr" element={<div>Tumblr</div>} />
+                <Route path="tumblr" element={<Tumblr />} />
                 <Route 
                     path="*"
                     element={<NotFound />}

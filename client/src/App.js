@@ -7,43 +7,13 @@ import Tumblr from './views/Tumblr';
 
 
 export default function App() {
-    const navigate = useNavigate();
     const {
         isLoading,
         isAuthenticated,
         loginWithRedirect,
-        getAccessTokenSilently,
-        getIdTokenClaims    
+        getAccessTokenSilently    
     } = useAuth0();
     const [data, setData] = useState();
-
-    useEffect(() => {
-        const getUserMetadata = async () => {
-        const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-      
-        try {
-            const accessToken = await getAccessTokenSilently({
-                audience: `https://www.terrorknubbel.de`
-            });
-
-            const userDetailsByIdUrl = `http://localhost:3001/api/private`;
-        
-            const metadataResponse = await fetch(userDetailsByIdUrl, {
-                headers: {
-                Authorization: `Bearer ${accessToken}`,
-                },
-            });
-        
-            const { message } = await metadataResponse.json();
-        
-            setData(message);
-        } catch (e) {
-            console.log(e.message);
-        }
-    };
-      
-        getUserMetadata();
-      }, [getAccessTokenSilently]);
 
     if (isLoading) return <div>Loading</div>
     if (!isAuthenticated) loginWithRedirect();

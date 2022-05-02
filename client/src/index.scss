@@ -175,12 +175,20 @@ nav .links button:hover{
         }
       }
 
+      #interval input:hover, #interval label:hover{
+        cursor: pointer;
+      }
+
       input[type="checkbox"]{
         width: 25px;
         height: 25px;
         margin-top: 5px;
         margin-left: -3px;
-      }        
+      }
+      
+      input[type="checkbox"]:hover{
+        cursor: pointer;
+      }
 
       tr:last-child{
         text-align: center;
@@ -232,7 +240,6 @@ nav .links button:hover{
           background-color: #efefef;
           padding: 5px 15px;
 
-
           .controls{
             display: flex;
             justify-content: space-between;
@@ -242,8 +249,15 @@ nav .links button:hover{
             .trash{
               color: $red;
             }
+
           }
+
         }
+
+        .scraper:hover{
+          cursor: pointer;
+        }
+
       }
     }
 

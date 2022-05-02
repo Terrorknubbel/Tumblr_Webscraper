@@ -10,7 +10,7 @@ export default function Navbar() {
         return (
             <>
                 <nav>
-                    <div className="logo">Webscraper</div>
+                    <div className="logo"><NavLink className="noLink" to="/">Webscraper</NavLink></div>
                     <div className="links">
                         <NavLink className={({ isActive }) => isActive ? "active" : ""} to="tumblr">Tumblr</NavLink>
                         <NavLink className={({ isActive }) => isActive ? "active" : ""} to="instagram">Instagram</NavLink>

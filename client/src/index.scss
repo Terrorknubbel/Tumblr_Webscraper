@@ -3,6 +3,9 @@ $primary-color: #104f7f;
 $secondary-color: #2a71a8;
 $background: #FAFAFA;
 $white: white;
+$grey: #0000004f;
+$background-grey: #efefef;
+$red: #970000;
 
 * {
   margin: 0;
@@ -16,6 +19,10 @@ html, body, #root{
   min-height: 100%;
 }
 
+html{
+  overflow-y: scroll;
+}
+
 body{
   background-color: $background;
 }
@@ -27,7 +34,7 @@ nav{
   position: sticky;
   top: 0;
   background-color: $white;
-  border-bottom: 1px solid #0000002b;
+  border-bottom: 1px solid $grey;
   justify-content: space-between;
   padding: 6px 15%;
   height: 55px;
@@ -122,7 +129,7 @@ nav .links button:hover{
   #controlPanel{
     width: 1000px;
     height: fit-content;
-    border: 1px solid #0000004f;
+    border: 1px solid $grey;
     background-color: $white;
     border-radius: 20px;
     padding: 20px 0px;
@@ -140,17 +147,20 @@ nav .links button:hover{
 
         td{
           height: 100%;
+          width: 100%;
+
           input[type="text"]{
             height: 100%;
             padding: 3px;
             font-size: 1.2rem;
             font-weight: 500;
+            width: 220px;
           }
         }
       }
 
       #interval{
-        display: flex;
+        display: inline-flex;
         flex-direction: column;
         gap: 10px;
 
@@ -197,11 +207,43 @@ nav .links button:hover{
     }
 
     #activeScraper{
-      padding-top: 20px;
-      border-left: 1px solid #0000004f;
+      border-left: 1px solid $grey;
+      margin-top: 25px;
 
       h2{
         font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+
+      .scraper-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        height: 90%;
+        gap: 5px;
+        box-sizing: content-box;
+
+        .scraper{
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          background-color: #efefef;
+          padding: 5px 15px;
+
+
+          .controls{
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: center;
+
+            .trash{
+              color: $red;
+            }
+          }
+        }
       }
     }
 
@@ -229,7 +271,7 @@ nav .links button:hover{
       }
 
       div{
-        border: 1px solid black;
+        border: 1px solid $grey;
         border-top: none;
         padding: 5px 10px;
         display: flex;
@@ -239,9 +281,48 @@ nav .links button:hover{
   }
 }
 
+.noLink{
+  color: inherit;
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 1100px) {
   nav .links {
     display: none;
+  }
+
+  #main{
+    padding: 10px !important;
+  }
+
+  #controlPanel{
+    flex-direction: column;
+    width: 100% !important;
+    
+    #controlForm{
+      padding: 0 !important; 
+    }
+
+    table{
+      width: 100%;
+      table-layout: fixed;
+      border-spacing: 0px !important;
+
+      tbody{
+        display: table;
+        width: 100%;
+        border-spacing: 10px;
+      }
+
+      td:nth-child(even){
+        text-align: right;
+      }
+
+      #notificationTd{
+        width: 220px;
+        text-align: left;
+      }
+    }
   }
 
   .notFound h1{
@@ -257,3 +338,50 @@ nav .links button:hover{
     font-size: 20px;
   }
 }
+
+@media only screen and (min-width: 440px) and (max-width: 515px){
+
+  #controlForm{
+    // td:nth-child(even){
+    //   text-align: left !important;
+    // }
+
+    tr td input[type="text"]{
+      width: 180px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 440px){
+  tr td input[type="text"]{
+    width: 150px !important;
+  }
+
+  // td:nth-child(even){
+  //   text-align: left !important;
+  // }
+}
+
+// @media only screen and (max-width: 400px) {
+//   #controlPanel{
+//     #controlForm{
+//       padding: 0 !important;
+
+//       table{
+//         tr td input[type="text"]{
+//           width: 150px !important;
+//           margin-left: -10%;
+//         }
+
+//         td:nth-child(even){
+//           text-align: left;
+//         }
+//       }
+
+//       #interval{
+//         margin-left: -10%;
+//         align-items: start;
+//       }
+//     }
+//   }
+// }

@@ -84,9 +84,14 @@ nav .links button{
   font-weight: 600;
 }
 
-nav .links button:hover{
-  cursor: pointer;
-  transform: scale(0.95);
+nav .links button{
+  &:hover{
+    cursor: pointer;
+  }
+  
+  &:active{
+    transform: scale(0.95);
+  }
 }
 
 #root > div{
@@ -201,6 +206,10 @@ nav .links button:hover{
           background-color: $secondary-color;
           color: $white;
           font-weight: 500;
+
+          &:active{
+            transform: scale(0.95);
+          }
         }
 
         button:hover{
@@ -301,40 +310,48 @@ nav .links button:hover{
 }
 
 @media only screen and (max-width: 1100px) {
+  nav{
+    padding: 6px 3%;
+  }
+
   nav .links {
     display: none;
   }
 
   #main{
-    padding: 10px !important;
-  }
+    padding: 10px;
 
-  #controlPanel{
-    flex-direction: column;
-    width: 100% !important;
-    
-    #controlForm{
-      padding: 0 !important; 
-    }
-
-    table{
+    #controlPanel{
+      flex-direction: column;
       width: 100%;
-      table-layout: fixed;
-      border-spacing: 0px !important;
 
-      tbody{
-        display: table;
+      #activeScraper{
+        border: none;
+      }
+      
+      #controlForm{
+        padding: 0; 
+      }
+  
+      table{
         width: 100%;
-        border-spacing: 10px;
-      }
-
-      td:nth-child(even){
-        text-align: right;
-      }
-
-      #notificationTd{
-        width: 220px;
-        text-align: left;
+        table-layout: fixed;
+        border-spacing: 0px;
+  
+        tbody{
+          display: table;
+          width: 100%;
+          border-spacing: 10px;
+        }
+  
+        td:nth-child(even){
+          text-align: right;
+        }
+  
+        #notificationTd{
+          width: 220px;
+          text-align: left;
+        }
       }
     }
   }
@@ -353,49 +370,14 @@ nav .links button:hover{
   }
 }
 
-@media only screen and (min-width: 440px) and (max-width: 515px){
-
-  #controlForm{
-    // td:nth-child(even){
-    //   text-align: left !important;
-    // }
-
-    tr td input[type="text"]{
-      width: 180px !important;
-    }
+@media only screen and (max-width: 515px){
+  #main #controlForm table tr td input[type="text"]{
+      width: 180px;
   }
 }
 
 @media only screen and (max-width: 440px){
-  tr td input[type="text"]{
-    width: 150px !important;
+  #main #controlForm table tr td input[type="text"]{
+    width: 150px;
   }
-
-  // td:nth-child(even){
-  //   text-align: left !important;
-  // }
 }
-
-// @media only screen and (max-width: 400px) {
-//   #controlPanel{
-//     #controlForm{
-//       padding: 0 !important;
-
-//       table{
-//         tr td input[type="text"]{
-//           width: 150px !important;
-//           margin-left: -10%;
-//         }
-
-//         td:nth-child(even){
-//           text-align: left;
-//         }
-//       }
-
-//       #interval{
-//         margin-left: -10%;
-//         align-items: start;
-//       }
-//     }
-//   }
-// }

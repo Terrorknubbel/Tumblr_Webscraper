@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 
-export default function Gallery() {
+export default function Gallery({ accessToken }) {
 
-    const { getAccessTokenSilently } = useAuth0();
     const [images, setImages] = useState([]);
     const api_server = process.env.REACT_APP_API_SERVER;
     
     const getImages = async () => {       
         try {
-            const accessToken = await getAccessTokenSilently({
-                audience: `https://www.terrorknubbel.de`
-            });
-        
             let response = await axios.get(`${api_server}/tumblr/images`, {
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
@@ -41,9 +35,9 @@ export default function Gallery() {
         }
     };
 
-    useEffect(() => {        
+    useEffect(() => {     
         getImages();
-    }, [getAccessTokenSilently]);
+    }, [accessToken]);
 
     return (
         <div id="gallery">

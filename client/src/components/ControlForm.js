@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export default function ControlForm() {
+export default function ControlForm({ accessToken, pushScraper }) {
 
     const [username, setUsername] = useState("");
     const [interval, setInterval] = useState("weekly");
@@ -20,7 +20,8 @@ export default function ControlForm() {
     
     function handleSubmit(e){
        e.preventDefault();
-       console.log(username, interval, notification);
+
+       pushScraper({"username": username, "interval": interval, "notification": notification});
     }
 
     return (
@@ -33,7 +34,7 @@ export default function ControlForm() {
                                 <span>Username</span>
                             </td>
                             <td>
-                                <input name="username" required value={username} onChange={handleUsernameChange} type="text"></input>
+                                <input name="username" required value={username} onChange={handleUsernameChange} type="text" autoComplete="off"/>
                             </td>
                         </tr>
                         <tr>
